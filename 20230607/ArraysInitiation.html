@@ -5,16 +5,82 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DWWM: Arrays</title>
+    <style>
+        * {
+            font-family: 'roboto', sans-serif;
+            padding: 0;
+            margin: 0;
+        }
+
+        body{
+            min-height: 100vh;
+
+            object-fit: fill;
+            object-position: 50% 50%;
+            background-image: linear-gradient(to right, rgba(255, 255, 255, 0.215) 100% 100%), url('./cache/background.jpeg');
+            background-size: cover;
+            background-blend-mode: overlay;
+            background-repeat: no-repeat;
+        }
+
+        #ArticlesBox {
+            width: 90%;
+            margin: 2em auto;
+            padding: 2em;
+
+            display: block;
+
+            justify-items: center;
+        }
+
+        #TheArticles {
+            display: grid;
+            grid-template-columns: auto auto auto;
+
+            justify-items: center;
+        }
+
+        #ArticlesBox article {
+            width: 80%;
+        }
+
+        #ArticlesBox article a img {
+            width: 100%;
+        }
+
+        #ArticlesBox button {
+            display: block;
+            width: 25%;
+            margin: 2em auto;
+
+            padding: 0.4em;
+
+            border: black solid 2px;
+        }
+
+        @media (max-width: 900px) {
+
+            #TheArticles {
+                display: block;
+            }
+
+        }
+    </style>
 </head>
 <body>
+    <section id="ArticlesBox">
+        <div id="TheArticles">
+        </div>
+    </section>
+
     <script>
-        let Example1 = ["pomme", 18, 20, "banane"];
-        let ObjectInArray = [{ samoussa : "0.40", tomate : "0.20" }];
-        let tableauPrincipal = [
-            [1, 2, 3],
-            [4, 5, 6],
-            [7, 8, 9]
-        ];
+        // let Example1 = ["pomme", 18, 20, "banane"];
+        // let ObjectInArray = [{ samoussa : "0.40", tomate : "0.20" }];
+        // let tableauPrincipal = [
+        //     [1, 2, 3],
+        //     [4, 5, 6],
+        //     [7, 8, 9]
+        // ];
 
         // console.log(tableauPrincipal[0]); // Affiche [1, 2, 3]
         // console.log(tableauPrincipal[1][2]); // Affiche 6
@@ -75,18 +141,61 @@
         ];
 
 
+        // function GenerateArticles(ArticlesData)
+        // {
+        //     // for (let Index = 1; Index <= ArticlesData.length; Index++) {
+        //     ArticlesData.forEach((EachArticle, Index) => {
+
+        //         // Object.entries(EachArticle).forEach( (EachProperties, Index) => {
+        //         //     console.log(EachProperties);
+        //         // });
+
+        //         for (const [key, value] of Object.entries(EachArticle)) {
+        //             console.log(key, value);
+        //         }
+        //     });
+        // }
+        // GenerateArticles(FakeArticleData);
+
         function GenerateArticles(ArticlesData)
         {
+            let ArticlesBox = document.getElementById("TheArticles");
+
             // for (let Index = 1; Index <= ArticlesData.length; Index++) {
-            ArticlesData.forEach((EachArticle, Index) => {
+            ArticlesData.forEach((Each, Index) => {
 
-                // Object.entries(EachArticle).forEach( (EachProperties, Index) => {
-                //     console.log(EachProperties);
-                // });
+                let NewArticle = document.createElement("article");
+                NewArticle.id = `recipe${Index + 1}`;
 
-                for (const [key, value] of Object.entries(EachArticle)) {
-                    console.log(key, value);
-                }
+                let Title = document.createElement("h3");
+                Title.innerHTML = Each.Title;
+
+                let Date = document.createElement("h4");
+                Date.innerHTML = Each.Date;
+
+                let Category = document.createElement("h5");
+                Category.innerHTML = Each.Category;
+
+                let Anchor = document.createElement("a");
+                Anchor.href = Each.Link;
+
+                let Image = document.createElement("img");
+                Image.src= Each.ImageLink;
+                Image.alt=`Picture Of ${Each.Title}`;
+                
+                Anchor.append(Image);
+
+                let Description = document.createElement("span");
+                Description.innerHTML = Each.Description;
+
+                let Button = document.createElement("button");
+                Button.innerHTML = "Click To Open";
+
+                NewArticle.append(Title, Date, Category, Anchor, Description, Button);
+
+                // ArticlesBox.append(NewArticle);
+                // ArticlesBox.insertAdjacentElement("beforeend", NewArticle);
+                ArticlesBox.appendChild(NewArticle);
             });
         }
 
