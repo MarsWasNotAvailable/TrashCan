@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DWWM: Arrays</title>
+</head>
+<body>
+    <script>
+        let Example1 = ["pomme", 18, 20, "banane"];
+        let ObjectInArray = [{ samoussa : "0.40", tomate : "0.20" }];
+        let tableauPrincipal = [
+            [1, 2, 3],
+            [4, 5, 6],
+            [7, 8, 9]
+        ];
+
+        // console.log(tableauPrincipal[0]); // Affiche [1, 2, 3]
+        // console.log(tableauPrincipal[1][2]); // Affiche 6
+        // console.log(tableauPrincipal[2][1]); // Affiche 8
+
+        // for (let index = 0; index < tableauPrincipal.length; index++) {
+        //     const element = tableauPrincipal[index];
+            
+        //     console.log(element);
+        // }
+
+        // for (let index = 0; index < Example1.length; index++) {
+        //     const element = Example1[index];
+            
+        //     console.log(element);
+        // }
+
+        // for (let index = 0; index < tableauPrincipal.length; index++) {
+
+        //     const EachContainer = tableauPrincipal[index];
+            
+        //     for (let index2 = 0; index2 < EachContainer.length; index2++) {
+        //         const EachValue = EachContainer[index2];
+                
+        //         console.log(EachValue);
+        //     }
+        // }
+
+        // console.log(ObjectInArray[0].samoussa);
+
+
+
+        let FakeArticleData = [
+            {
+                Title : "Recipe 1",
+                Date : "2023/01/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe1.jpeg",
+                Link : "./article-individual.html",
+                Description : "Meat Description"
+            },
+            {
+                Title : "Recipe 2",
+                Date : "2023/02/01",
+                Category : "Dessert",
+                ImageLink : "./cache/recipe2.jpeg",
+                Link : "./article-individual.html",
+                Description : "ummm dessert"
+            },
+            {
+                Title : "Recipe 3",
+                Date : "2023/03/01",
+                Category : "Lunch",
+                ImageLink : "./cache/recipe3.jpeg",
+                Link : "./article-individual.html",
+                Description : "Looks like some pizza"
+            }
+        ];
+
+
+        function GenerateArticles(ArticlesData)
+        {
+            // for (let Index = 1; Index <= ArticlesData.length; Index++) {
+            ArticlesData.forEach((EachArticle, Index) => {
+
+                // Object.entries(EachArticle).forEach( (EachProperties, Index) => {
+                //     console.log(EachProperties);
+                // });
+
+                for (const [key, value] of Object.entries(EachArticle)) {
+                    console.log(key, value);
+                }
+            });
+        }
+
+        GenerateArticles(FakeArticleData);
+
+    </script>
+</body>
+</html>
